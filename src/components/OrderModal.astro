@@ -1,6 +1,4 @@
 ---
-const webhookUrl = import.meta.env.PUBLIC_PREORDER_WEBHOOK ?? '';
-
 const categories = [
   {
     label: 'Burgers',
@@ -30,7 +28,7 @@ const categories = [
 ];
 ---
 
-<dialog class="pod" id="preorder-dialog" data-webhook={webhookUrl}>
+<dialog class="pod" id="preorder-dialog">
 
   <!-- Header -->
   <div class="pod__header">
@@ -126,7 +124,7 @@ const categories = [
   const orderNumEl  = document.getElementById('pod-order-num') as HTMLParagraphElement;
   const confirmClose = document.getElementById('pod-confirm-close') as HTMLButtonElement;
 
-  const WEBHOOK_URL = dialog.dataset.webhook ?? '';
+  const WEBHOOK_URL = '/api/preorder';
 
   // qty state: item id → quantity
   const qtys = new Map<string, number>();
