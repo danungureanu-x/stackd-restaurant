@@ -1,0 +1,77 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="footer__inner container">
+    <a href="#hero" class="footer__logo">STACKD</a>
+    <nav class="footer__nav">
+      <a href="#menu">Menu</a>
+      <a href="#about">About</a>
+      <a href="#reserve">Reserve</a>
+      <a href="#find-us">Find Us</a>
+    </nav>
+    <p class="footer__copy">
+      © {year} STACKD. All rights reserved.
+      <span class="footer__demo">· Concept & demonstration website — not a real business. Food photography via <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>.</span>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 2.5rem 0;
+  }
+  .footer__inner {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .footer__logo {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+  }
+  .footer__nav {
+    display: flex;
+    gap: 1.5rem;
+    margin-left: auto;
+  }
+  .footer__nav a {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+  .footer__nav a:hover { color: var(--text); }
+  .footer__copy {
+    font-size: 0.8rem;
+    color: var(--muted);
+    width: 100%;
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    margin-top: 0.5rem;
+  }
+  .footer__demo {
+    display: block;
+    margin-top: 0.4rem;
+    font-size: 0.72rem;
+    color: var(--muted);
+    opacity: 0.7;
+  }
+  .footer__demo a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  @media (max-width: 600px) {
+    .footer__nav { margin-left: 0; gap: 1rem; flex-wrap: wrap; }
+  }
+</style>

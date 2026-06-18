@@ -1,0 +1,139 @@
+---
+const burgers = [
+  { name: 'THE OG', desc: 'Double smash, American cheese, pickles, STACKD sauce', price: '42 lei' },
+  { name: 'SMOKY BBQ', desc: 'Smoked bacon, cheddar, caramelised onion, BBQ glaze', price: '47 lei' },
+  { name: 'SPICY BIRD', desc: 'Crispy chicken thigh, ghost pepper mayo, slaw, jalapeños', price: '44 lei' },
+  { name: 'TRUFFLE MELT', desc: 'Triple smash, gruyère, truffle mayo, crispy shallots', price: '55 lei' },
+];
+const sides = [
+  { name: 'SMASH FRIES', desc: 'Twice-fried, seasoned, STACKD seasoning', price: '18 lei' },
+  { name: 'CHEESE FRIES', desc: 'Smash fries, molten cheddar sauce, pickled jalapeños', price: '24 lei' },
+  { name: 'ONION RINGS', desc: 'Beer-battered, crispy, ranch dip', price: '20 lei' },
+];
+const drinks = [
+  { name: 'SHAKE — VANILLA', desc: 'Whole milk, vanilla bean, whipped cream', price: '28 lei' },
+  { name: 'SHAKE — PEANUT BUTTER', desc: 'Dark chocolate, peanut butter, salted caramel', price: '30 lei' },
+  { name: 'CRAFT LEMONADE', desc: 'House-made, ginger, mint, sparkling', price: '16 lei' },
+];
+---
+<section class="menu section" id="menu">
+  <div class="container">
+    <div class="menu__header reveal">
+      <p class="eyebrow">What we serve</p>
+      <h2 class="section-title">THE MENU</h2>
+    </div>
+
+    <div class="menu__category reveal">
+      <h3 class="menu__cat-title">Burgers</h3>
+      <div class="menu__grid">
+        {burgers.map(item => (
+          <div class="menu__card">
+            <div class="menu__card-top">
+              <span class="menu__item-name">{item.name}</span>
+              <span class="menu__price">{item.price}</span>
+            </div>
+            <p class="menu__item-desc">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="menu__category reveal">
+      <h3 class="menu__cat-title">Sides</h3>
+      <div class="menu__grid menu__grid--3">
+        {sides.map(item => (
+          <div class="menu__card">
+            <div class="menu__card-top">
+              <span class="menu__item-name">{item.name}</span>
+              <span class="menu__price">{item.price}</span>
+            </div>
+            <p class="menu__item-desc">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="menu__category reveal">
+      <h3 class="menu__cat-title">Drinks</h3>
+      <div class="menu__grid menu__grid--3">
+        {drinks.map(item => (
+          <div class="menu__card">
+            <div class="menu__card-top">
+              <span class="menu__item-name">{item.name}</span>
+              <span class="menu__price">{item.price}</span>
+            </div>
+            <p class="menu__item-desc">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .menu { background: var(--surface); }
+  .menu__header { margin-bottom: 4rem; }
+
+  .menu__category { margin-bottom: 3.5rem; }
+  .menu__cat-title {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .menu__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
+  }
+  .menu__grid--3 { grid-template-columns: repeat(3, 1fr); }
+
+  .menu__card {
+    background: var(--surface);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: background 0.2s;
+  }
+  .menu__card:hover {
+    background: var(--surface-2);
+    outline: 1px solid var(--accent);
+  }
+
+  .menu__card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+  }
+  .menu__item-name {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--text);
+  }
+  .menu__price {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  .menu__item-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    .menu__grid,
+    .menu__grid--3 { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,123 @@
+---
+---
+<header class="nav" id="nav">
+  <div class="nav__inner container">
+    <a href="#hero" class="nav__logo">STACKD</a>
+    <nav class="nav__links" id="nav-links">
+      <a href="#menu">Menu</a>
+      <a href="#about">About</a>
+      <a href="#find-us">Find Us</a>
+    </nav>
+    <a href="#reserve" class="btn btn--primary nav__cta">Book a Table</a>
+    <button class="nav__burger" id="nav-burger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<script>
+  const nav = document.getElementById('nav')!;
+  const burger = document.getElementById('nav-burger')!;
+  const links = document.getElementById('nav-links')!;
+
+  // Scroll: transparent → opaque
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('nav--scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // Mobile toggle
+  burger.addEventListener('click', () => {
+    const open = burger.getAttribute('aria-expanded') === 'true';
+    burger.setAttribute('aria-expanded', String(!open));
+    burger.classList.toggle('open', !open);
+    links.classList.toggle('open', !open);
+  });
+
+  // Close on link click
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      burger.setAttribute('aria-expanded', 'false');
+      burger.classList.remove('open');
+      links.classList.remove('open');
+    });
+  });
+</script>
+
+<style>
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1.25rem 0;
+    transition: background 0.3s ease, padding 0.3s ease;
+  }
+  .nav--scrolled {
+    background: rgba(13, 12, 10, 0.96);
+    backdrop-filter: blur(12px);
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  .nav__logo {
+    font-family: var(--font-mono);
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-right: auto;
+  }
+  .nav__links {
+    display: flex;
+    gap: 2rem;
+  }
+  .nav__links a {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+  .nav__links a:hover { color: var(--text); }
+
+  .nav__burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 4px;
+    margin-left: auto;
+  }
+  .nav__burger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .nav__burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav__burger.open span:nth-child(2) { opacity: 0; }
+  .nav__burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  @media (max-width: 768px) {
+    .nav__cta { display: none; }
+    .nav__burger { display: flex; }
+    .nav__links {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+    .nav__links.open { display: flex; }
+    .nav__links a { font-size: 1.2rem; color: var(--text); }
+  }
+</style>

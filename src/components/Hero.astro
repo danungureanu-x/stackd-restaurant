@@ -1,0 +1,107 @@
+---
+---
+<section class="hero" id="hero">
+  <div class="hero__bg">
+    <img
+      src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1800&q=80&auto=format&fit=crop"
+      alt="STACKD signature smash burger"
+      class="hero__img"
+    />
+    <div class="hero__overlay"></div>
+  </div>
+  <div class="hero__content container">
+    <p class="eyebrow">Premium Smash Burgers</p>
+    <h1 class="hero__title">STACKD</h1>
+    <p class="hero__tagline">Built different.<br />Eaten better.</p>
+    <div class="hero__ctas">
+      <a href="#menu" class="btn btn--primary">See the Menu</a>
+      <a href="#reserve" class="btn btn--outline">Book a Table</a>
+    </div>
+  </div>
+  <a href="#about" class="hero__scroll" aria-label="Scroll down">
+    <span class="hero__scroll-line"></span>
+  </a>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+  }
+  .hero__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transform: scale(1.05);
+    transition: transform 8s ease;
+  }
+  .hero:hover .hero__img {
+    transform: scale(1.08);
+  }
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(13, 12, 10, 0.3) 0%,
+      rgba(13, 12, 10, 0.6) 60%,
+      rgba(13, 12, 10, 0.9) 100%
+    );
+  }
+  .hero__content {
+    position: relative;
+    z-index: 1;
+    padding-top: 8rem;
+  }
+  .hero__title {
+    font-family: var(--font-mono);
+    font-size: clamp(5rem, 14vw, 12rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+  }
+  .hero__tagline {
+    font-family: var(--font-mono);
+    font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+    color: var(--muted);
+    line-height: 1.4;
+    margin-bottom: 2.5rem;
+    max-width: 420px;
+  }
+  .hero__ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .hero__scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+  }
+  .hero__scroll-line {
+    display: block;
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, var(--accent));
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(0.6); }
+  }
+</style>

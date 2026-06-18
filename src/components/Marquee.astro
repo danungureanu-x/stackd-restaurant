@@ -1,0 +1,51 @@
+---
+interface Props {
+  dark?: boolean;
+}
+const { dark = false } = Astro.props;
+const text = 'STACKD · SMASH BURGERS · FRESH DAILY · OPEN LATE · CRISPY FRIES · NO SHORTCUTS · ';
+---
+<div class:list={['marquee', { 'marquee--dark': dark }]}>
+  <div class="marquee__track">
+    <span>{text}</span>
+    <span aria-hidden="true">{text}</span>
+    <span aria-hidden="true">{text}</span>
+  </div>
+</div>
+
+<style>
+  .marquee {
+    overflow: hidden;
+    background: var(--accent);
+    padding: 0.9rem 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .marquee--dark {
+    background: var(--bg);
+    border-color: var(--border);
+  }
+  .marquee__track {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee 28s linear infinite;
+  }
+  .marquee__track span {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding-right: 0;
+    color: var(--bg);
+  }
+  .marquee--dark .marquee__track span {
+    color: var(--accent);
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-33.333%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee__track { animation: none; }
+  }
+</style>

@@ -1,0 +1,122 @@
+---
+---
+<section class="reserve section" id="reserve">
+  <div class="container">
+    <div class="reserve__inner">
+      <div class="reserve__text reveal">
+        <p class="eyebrow">Reservations</p>
+        <h2 class="section-title">Book a<br />Table</h2>
+        <p>Walk-ins welcome — but tables go fast. Lock yours in.</p>
+      </div>
+      <form class="reserve__form reveal" id="reserve-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="r-name">Name</label>
+            <input type="text" id="r-name" name="name" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label for="r-phone">Phone</label>
+            <input type="tel" id="r-phone" name="phone" placeholder="+40 7xx xxx xxx" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="r-date">Date</label>
+            <input type="date" id="r-date" name="date" required />
+          </div>
+          <div class="form-group">
+            <label for="r-time">Time</label>
+            <input type="time" id="r-time" name="time" min="11:00" max="23:00" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="r-guests">Party size</label>
+          <select id="r-guests" name="guests">
+            <option value="1">1 person</option>
+            <option value="2" selected>2 people</option>
+            <option value="3">3 people</option>
+            <option value="4">4 people</option>
+            <option value="5">5 people</option>
+            <option value="6+">6+ people</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn--primary" id="reserve-btn">
+          Confirm Reservation
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('reserve-form') as HTMLFormElement;
+  const btn = document.getElementById('reserve-btn') as HTMLButtonElement;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    await new Promise(r => setTimeout(r, 1200));
+    btn.textContent = 'Confirmed! See you soon.';
+    setTimeout(() => {
+      btn.textContent = 'Confirm Reservation';
+      btn.disabled = false;
+      form.reset();
+    }, 4000);
+  });
+</script>
+
+<style>
+  .reserve { background: var(--surface); }
+  .reserve__inner {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .reserve__text p:last-child {
+    color: var(--muted);
+    margin-top: 1rem;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .reserve__form { display: flex; flex-direction: column; gap: 1.25rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+  label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  input, select {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.85rem 1rem;
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    outline: none;
+    width: 100%;
+    transition: border-color 0.2s;
+  }
+  input:focus, select:focus { border-color: var(--accent); }
+  input::placeholder { color: var(--muted); }
+
+  select option { background: var(--surface-2); }
+
+  .reserve__form .btn {
+    margin-top: 0.5rem;
+    align-self: flex-start;
+  }
+
+  @media (max-width: 768px) {
+    .reserve__inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .reserve__form .btn { align-self: stretch; justify-content: center; }
+  }
+</style>

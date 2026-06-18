@@ -1,0 +1,99 @@
+---
+---
+<section class="contact section" id="find-us">
+  <div class="contact__grid container">
+    <div class="contact__info reveal">
+      <p class="eyebrow">Find Us</p>
+      <h2 class="section-title">Come<br />hungry.</h2>
+      <ul class="contact__details">
+        <li>
+          <span class="detail-label">Location</span>
+          <span class="coming-soon">Coming soon — București</span>
+        </li>
+        <li>
+          <span class="detail-label">Contact</span>
+          <span class="coming-soon">Details announced at launch</span>
+        </li>
+      </ul>
+    </div>
+    <div class="contact__hours reveal">
+      <p class="eyebrow">Hours</p>
+      <table class="hours-table">
+        <tbody>
+          <tr><td>Mon – Thu</td><td>11:00 – 22:00</td></tr>
+          <tr><td>Fri – Sat</td><td>11:00 – 23:30</td></tr>
+          <tr><td>Sunday</td><td>12:00 – 21:00</td></tr>
+        </tbody>
+      </table>
+      <div class="contact__map">
+        <p class="coming-soon">Location announced at launch</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .contact__details {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    margin-top: 2rem;
+  }
+  .contact__details li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .detail-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .contact__details span:not(.detail-label),
+  .contact__details a {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.6;
+    transition: color 0.2s;
+  }
+  .contact__details a:hover { color: var(--text); }
+
+  .hours-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 1.5rem;
+  }
+  .hours-table td {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  .hours-table td:last-child {
+    text-align: right;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text);
+  }
+  .coming-soon {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .contact__map { margin-top: 2rem; }
+
+  @media (max-width: 768px) {
+    .contact__grid { grid-template-columns: 1fr; gap: 3rem; }
+  }
+</style>

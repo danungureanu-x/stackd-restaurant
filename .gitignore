@@ -1,5 +1,9 @@
 .env
 .tmp/
 node_modules/
+dist/
+.astro/
+SKILLS/
+.firecrawl/
 .claude/settings.json
 .claude/settings.local.json
